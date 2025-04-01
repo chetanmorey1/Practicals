@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Popup Boxes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height of the viewport */
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+        }
+    </style>
+    <script>
+        // A. Display current date in textbox
+        function displayDate() {
+            const date = new Date();
+            document.getElementById('dateTextbox').value = date.toLocaleString();
+        }
+
+        // B. Calculate factorial of a number
+        function calculateFactorial() {
+            const n = prompt("Enter a number to calculate its factorial:");
+            if (n !== null) {
+                const number = parseInt(n);
+                if (isNaN(number) || number < 0) {
+                    alert("Please enter a valid non-negative integer.");
+                    return;
+                }
+                let factorial = 1;
+                for (let i = 1; i <= number; i++) {
+                    factorial *= i;
+                }
+                alert(`The factorial of ${number} is ${factorial}.`);
+            }
+        }
+
+        // C. Display multiplication table of a number
+        function multiplicationTable() {
+            const n = prompt("Enter a number to display its multiplication table:");
+            if (n !== null) {
+                const number = parseInt(n);
+                if (isNaN(number)) {
+                    alert("Please enter a valid number.");
+                    return;
+                }
+                let table = '';
+                for (let i = 1; i <= 10; i++) {
+                    table += `${number} x ${i} = ${number * i}\n`;
+                }
+                alert(`Multiplication table of ${number}:\n${table}`);
+            }
+        }
+
+        // D. Sum of two or more numbers
+        function sumOfNumbers() {
+            let sum = 0;
+            let addMore = true;
+
+            while (addMore) {
+                const n = prompt("Enter a number to add:");
+                if (n !== null) {
+                    const number = parseFloat(n);
+                    if (isNaN(number)) {
+                        alert("Please enter a valid number.");
+                    } else {
+                        sum += number;
+                    }
+                }
+
+                addMore = confirm("Do you want to add another number?");
+            }
+
+            alert(`The total sum is: ${sum}`);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Popup Boxes</h1>
+        <button onclick="displayDate()">Display Date</button>
+        <input type="text" id="dateTextbox" placeholder="Date will be displayed here" readonly><br><br>
+
+        <button onclick="calculateFactorial()">Calculate Factorial</button><br><br>
+
+        <button onclick="multiplicationTable()">Show Multiplication Table</button><br><br>
+
+        <button onclick="sumOfNumbers()">Sum of Numbers</button><br><br>
+    </div>
+</body>
+</html>
